@@ -37,6 +37,10 @@ class SAPluginManager(private val project: Project) {
         SensorsDataSDKVersionHelper()
     }
 
+    val disableRN: Boolean by lazy {
+        extension.disableRN
+    }
+
     private fun checkDependency() {
         project.afterEvaluate {
             if (!project.plugins.hasPlugin("com.android.application")) {

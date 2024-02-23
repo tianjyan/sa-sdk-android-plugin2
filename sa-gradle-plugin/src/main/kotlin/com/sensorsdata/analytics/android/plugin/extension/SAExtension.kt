@@ -14,6 +14,7 @@ open class SAExtension {
     var exclude = mutableListOf<String>()
     var include = mutableListOf<String>()
     var disableModules = mutableListOf<String>()
+    var disableRN = false
     val sdk: SASDKExtension = SASDKExtension()
 
     fun sdk(action: Action<SASDKExtension>) {
@@ -31,6 +32,7 @@ open class SAExtension {
                 "\texclude=[" + exclude.joinToString(",") + "]" + "\n" +
                 "\tinclude=[" + include.joinToString(",") + "]" + "\n" +
                 "\tdisableModules=[" + disableModules.joinToString(",") + "]" + "\n" +
+                "\tdisableRN=" + disableRN + "\n" +
                 "\tsdk {\n" + sdk + "\n" +
                 "\t}"
     }

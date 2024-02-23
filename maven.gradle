@@ -40,9 +40,9 @@ publishing {
             artifact("build/libs/${project.name}-${version}.jar")
             pom {
                 packaging 'jar'
-                name = 'The official Android SDK Gradle Plugin for Sensors Analytics.'
-                description = 'The official Android SDK Gradle Plugin for Sensors Analytics.'
-                url = 'The official Android SDK Gradle Plugin for Sensors Analytics.'
+                name = 'The unofficial Android SDK Gradle Plugin for Sensors Analytics.'
+                description = 'The unofficial Android SDK Gradle Plugin for Sensors Analytics.'
+                url = 'The unofficial Android SDK Gradle Plugin for Sensors Analytics.'
                 licenses {
                     license {
                         name = 'The Apache Software License, Version 2.0'
@@ -60,11 +60,16 @@ publishing {
                         name = 'dengshiwei'
                         email = 'dengshiwei@sensorsdata.com'
                     }
+                    developer {
+                        id = 'tianjyan'
+                        name = 'Tianjie Yang'
+                        email = 'tianjyan@qq.com'
+                    }
                 }
                 scm {
-                    connection = 'https://github.com/sensorsdata/sa-sdk-android-plugin2'
-                    developerConnection = 'https://github.com/sensorsdata/sa-sdk-android-plugin2.git'
-                    url = 'https://github.com/sensorsdata/sa-sdk-android-plugin2'
+                    connection = 'https://github.com/tianjyan/sa-sdk-android-plugin2'
+                    developerConnection = 'https://github.com/tianjyan/sa-sdk-android-plugin2.git'
+                    url = 'https://github.com/tianjyan/sa-sdk-android-plugin2'
                 }
                 pom.withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
@@ -97,23 +102,18 @@ publishing {
     }
 
     repositories {
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file('local.properties').newDataInputStream())
-        def mavenUser = properties.getProperty("maven.user")
-        def mavenPassword = properties.getProperty("maven.password")
         maven {
-            url = '../repo'
-//            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
-//            credentials {
-//                username mavenUser
-//                password mavenPassword
-//            }
+            url = uri("https://maven.pkg.github.com/tianjyan/sa-sdk-android-plugin2")
+            credentials {
+                username = project.findProperty("github.email")
+                password = project.findProperty("github.token")
+            }
         }
     }
 
 }
 
 // 对 mavenAndroid 发布内容进行签名
-signing {
-    sign publishing.publications.mavenAndroid
-}
+//signing {
+//    sign publishing.publications.mavenAndroid
+//}

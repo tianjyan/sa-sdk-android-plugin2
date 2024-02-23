@@ -38,6 +38,7 @@ class V73Impl(project: Project, override val asmWrapperFactory: AsmCompatFactory
                         "exclude" -> it.exclude.set(result as MutableList<String>)
                         "include" -> it.include.set(result as MutableList<String>)
                         "disableModules" -> it.disableModules.set(result as MutableList<String>)
+                        "disableRN" -> it.disableRN.set(result as Boolean)
                     }
 
                     if (property.name == "sdk") {

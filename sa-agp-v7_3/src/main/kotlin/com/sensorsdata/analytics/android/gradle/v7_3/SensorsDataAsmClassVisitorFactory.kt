@@ -73,6 +73,8 @@ interface ConfigInstrumentParams:InstrumentationParameters{
     val include:ListProperty<String>
     @get:Input
     val disableModules:ListProperty<String>
+    @get:Input
+    val disableRN: Property<Boolean>
 
     //SDK
     @get:Input

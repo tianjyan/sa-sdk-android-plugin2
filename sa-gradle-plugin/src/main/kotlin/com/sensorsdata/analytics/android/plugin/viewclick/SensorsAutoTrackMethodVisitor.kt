@@ -460,7 +460,7 @@ class SensorsAutoTrackMethodVisitor(
             isHasTracked = true
             return
         }
-        if (handleRN()) {
+        if (!pluginManager.disableRN && handleRN()) {
             isHasTracked = true
             return
         }
